@@ -1,0 +1,147 @@
+.right-main-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right-content {
+  padding-left: 0px;
+  text-align: center;
+}
+
+.right-content-hero {
+  display: flex;
+  padding-top: 10rem;
+  height: max-content;
+  position: relative;
+}
+
+.main-text-container {
+  display: block;
+  flex: 1 1 0%;
+}
+
+.top-text {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.5vw;
+  color: var(--color-accent-500);
+}
+
+.top-text::selection {
+  color: white;
+  background-color: red;
+}
+
+.dev-text {
+  font-size: 7vw;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.dev-text div::selection {
+  color: white;
+  background-color: red;
+}
+
+.scroll-down-main {
+  margin-top: 7rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.scroll-mouse {
+  position: relative;
+  display: inline-flex;
+  width: 2rem;
+  height: 3.5rem;
+  border: 2px solid var(--color-neutral-900);
+  border-radius: 2.25rem;
+}
+
+.mouse-scroll {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--color-accent-500);
+  border-radius: 50%;
+}
+
+/* ----------------------- loader ------------------------ */
+.loader {
+  height: 8vw;
+  overflow: hidden;
+}
+
+.loader-content div {
+  height: 8vw;
+}
+
+.loader-content {
+  animation-fill-mode: forwards;
+  animation-name: scroll;
+  animation-duration: 3s;
+  animation-timing-function: normal;
+  animation-play-state: running;
+  animation-iteration-count: 1;
+  animation-delay: 0.8s;
+}
+
+@keyframes scroll {
+  0% {
+    margin-top: -0rem;
+  }
+  20% {
+    margin-top: -8vw;
+  }
+  40% {
+    margin-top: -16vw;
+  }
+  60% {
+    margin-top: -24vw;
+  }
+  80% {
+    margin-top: -32vw;
+  }
+  100% {
+    margin-top: -40.25vw;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .right-content {
+    padding-left: 120px;
+    text-align: initial;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .right-content {
+    padding-left: 120px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .right-content {
+    padding-left: 160px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .right-content {
+    padding-left: 180px;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .right-content {
+    padding-left: 230px;
+  }
+}

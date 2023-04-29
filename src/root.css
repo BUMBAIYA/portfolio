@@ -1,0 +1,38 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+  --color-neutral-100: hsl(0, 0%, 100%);
+  --color-neutral-900: hsl(207, 19%, 9%);
+
+  --color-accent-100: #2a95bf;
+  --color-accent-200: #6d45ff;
+  --color-accent-300: #ffce3b;
+  --color-accent-400: hsl(142, 90%, 55%);
+  --color-accent-500: red;
+  --color-muted-100: #282b69;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  color: var(--color-neutral-900);
+  background-color: var(--color-neutral-100);
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+}

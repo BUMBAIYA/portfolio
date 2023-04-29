@@ -1,0 +1,97 @@
+.nav-main-container {
+  width: 100%;
+  margin: 0 auto;
+  display: none;
+  position: absolute;
+}
+
+.navbar-main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: fixed;
+  max-width: 50px;
+  align-items: center;
+  left: 3rem;
+  top: 3rem;
+  z-index: 100;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg);
+}
+
+.nav-item {
+  transform: rotate(180deg);
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-hover:hover {
+  letter-spacing: 0.15rem;
+  color: var(--color-accent-500);
+  transition: all 400ms ease-in-out;
+}
+
+.nav-socials-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.nav-icon {
+  margin: 0.5rem 0px;
+  transition: scale 200ms ease-in-out, fill 200ms ease-in-out;
+  fill: var(--color-neutral-900);
+  cursor: pointer;
+}
+
+.nav-icon:hover {
+  scale: 1.25;
+  fill: var(--color-accent-500);
+}
+
+#theme-btn {
+  cursor: pointer;
+  background-color: var(--color-neutral-100);
+  color: var(--color-accent-500);
+  outline: none;
+  border: none;
+}
+
+.nav-theme-icon {
+  margin: 10px 0;
+  fill: var(--color-accent-500);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.spin {
+  animation-fill-mode: forwards;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-play-state: running;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+@media only screen and (min-width: 480px) {
+  .nav-main-container {
+    display: flex;
+  }
+}
