@@ -82,14 +82,14 @@ window.onload = () => {
   };
 };
 
-const menuBtn = document.querySelector("#menu-btn")!;
-const menu = document.querySelector(".hamburger")!;
+// const menuBtn = document.querySelector("#menu-btn")!;
+// const menu = document.querySelector(".hamburger")!;
 
-menuBtn.addEventListener(
-  "click",
-  () => {
-    menu.classList.toggle("is-active");
-    console.log("cada");
-  },
-  false
-);
+// menuBtn.addEventListener(
+//   "click",
+//   () => {
+//     menu.classList.toggle("is-active");
+//     console.log("cada");
+//   },
+//   false
+// );
