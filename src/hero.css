@@ -1,3 +1,5 @@
+/* ---------------- Main content container ---------------- */
+
 .right-main-container {
   width: 100%;
   min-height: 100vh;
@@ -23,30 +25,77 @@
   flex: 1 1 0%;
 }
 
-.top-text {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 2.5vw;
-  color: var(--color-accent-500);
-}
-
-.top-text::selection {
-  color: white;
-  background-color: red;
-}
-
 .dev-text {
-  font-size: 7vw;
+  display: inline-block;
+  font-size: 10vw;
   line-height: 1;
   font-weight: 700;
+  font-family: monospace;
+}
+
+.dev-text h1 {
+  font-size: 9vw;
 }
 
 .dev-text div::selection {
-  color: white;
-  background-color: red;
+  color: var(--color-neutral-100);
+  background-color: var(--color-accent-500);
+}
+
+.dev-text h1::selection {
+  color: var(--color-neutral-100);
+  background-color: var(--color-accent-500);
+}
+
+/* ----------------- Profession text ------------------- */
+.profession-container {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.profession-bar-wrapper {
+  flex: 1 1 0%;
+  height: 3px;
+}
+
+.profession-bar {
+  width: 0%;
+  height: 3px;
+  background-color: var(--color-accent-500);
+  animation: progress-fill 800ms ease-out 5400ms 1 forwards;
+}
+
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.profession-text {
+  position: relative;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 5vw;
+  color: var(--color-accent-500);
+  font-weight: 900;
+  font-family: monospace;
+  opacity: 0;
+  animation: show 300ms ease-in 6400ms 1 forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .scroll-down-main {
@@ -72,47 +121,34 @@
   height: 0.75rem;
   background-color: var(--color-accent-500);
   border-radius: 50%;
+  animation-fill-mode: forwards;
+  animation-name: mousescroll;
+  animation-duration: 3s;
+  animation-timing-function: normal;
+  animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes mousescroll {
+  0% {
+    top: 0.5rem;
+    left: 0.5rem;
+    opacity: 1;
+  }
+  80% {
+    top: 2rem;
+    opacity: 0;
+  }
+  100% {
+    top: 0.5rem;
+    opacity: 0;
+  }
 }
 
 /* ----------------------- loader ------------------------ */
 .loader {
-  height: 8vw;
-  overflow: hidden;
-}
-
-.loader-content div {
-  height: 8vw;
-}
-
-.loader-content {
-  animation-fill-mode: forwards;
-  animation-name: scroll;
-  animation-duration: 3s;
-  animation-timing-function: normal;
-  animation-play-state: running;
-  animation-iteration-count: 1;
-  animation-delay: 0.8s;
-}
-
-@keyframes scroll {
-  0% {
-    margin-top: -0rem;
-  }
-  20% {
-    margin-top: -8vw;
-  }
-  40% {
-    margin-top: -16vw;
-  }
-  60% {
-    margin-top: -24vw;
-  }
-  80% {
-    margin-top: -32vw;
-  }
-  100% {
-    margin-top: -40.25vw;
-  }
+  color: var(--color-accent-500);
 }
 
 @media only screen and (min-width: 480px) {
@@ -120,17 +156,32 @@
     padding-left: 120px;
     text-align: initial;
   }
+  .dev-text {
+    font-size: 7vw;
+  }
+  .dev-text h1 {
+    font-size: 7vw;
+  }
+  .profession-text {
+    font-size: 3.5vw;
+  }
 }
 
 @media only screen and (min-width: 800px) {
   .right-content {
     padding-left: 120px;
   }
+  .profession-text {
+    font-size: 3vw;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .right-content {
     padding-left: 160px;
+  }
+  .profession-text {
+    font-size: 2.5vw;
   }
 }
 

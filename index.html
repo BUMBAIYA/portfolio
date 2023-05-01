@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/root.css" />
     <link rel="stylesheet" href="./src/navbar.css" />
@@ -11,18 +11,39 @@
     <meta name="description" content="Portfolio website of Amit Chauhan" />
   </head>
   <body>
+    <div id="main-cursor" class="main-cursor"></div>
+    <div id="main-cursor-ring" class="main-cursor-ring"></div>
+    <div id="loading-container">
+      <div id="loading-text" class="loading-text">
+        <span>A</span>
+        <span>M</span>
+        <span>I</span>
+        <span>T</span>
+      </div>
+    </div>
     <div class="container">
-      <div id="cursor" class="main-cursor"></div>
+      <div class="logo">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 10 10"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3.78711 3.17969L5 0.841797L9.74609 10H7.22656L3.78711 3.17969ZM4.6543 6.29688L2.77344 10H0.253906L3.42969 3.87109L4.6543 6.29688Z"
+          />
+        </svg>
+      </div>
       <div class="nav-main-container">
         <div class="navbar-main">
           <div class="nav-items">
-            <div class="nav-item nav-hover">Home</div>
-            <div class="nav-item nav-hover">About</div>
-            <div class="nav-item nav-hover">Projects</div>
-            <div class="nav-item nav-hover">Contact</div>
+            <div class="nav-item nav-hover" data-cursor="pointer">Home</div>
+            <div class="nav-item nav-hover" data-cursor="pointer">About</div>
+            <div class="nav-item nav-hover" data-cursor="pointer">Projects</div>
+            <div class="nav-item nav-hover" data-cursor="pointer">Contact</div>
           </div>
           <div class="nav-socials-icons">
-            <div class="nav-icon">
+            <div class="nav-icon" data-cursor="pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -36,7 +57,7 @@
                 ></path>
               </svg>
             </div>
-            <div class="nav-icon">
+            <div class="nav-icon" data-cursor="pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -50,7 +71,7 @@
                 ></path>
               </svg>
             </div>
-            <div class="nav-icon">
+            <div class="nav-icon" data-cursor="pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -65,7 +86,7 @@
               </svg>
             </div>
             <div class="nav-theme-icon">
-              <button id="theme-btn">
+              <button id="theme-btn" aria-label="theme button">
                 <svg
                   stroke-width="0"
                   viewBox="0 0 16 16"
@@ -82,34 +103,40 @@
           </div>
         </div>
       </div>
+      <div class="menu-icon">
+        <button id="menu-btn" type="button" data-cursor="pointer">
+          <div class="hamburger" id="hamburger-6">
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </button>
+      </div>
       <div class="right-main-container">
         <div class="right-content">
           <div class="right-content-hero">
             <div class="main-text-container">
               <div class="dev-text">
-                <div class="loader">
-                  <div class="loader-content">
-                    <div>नमस्ते</div>
-                    <div>Halo</div>
-                    <div>Guten tag</div>
-                    <div>કેમ છો?</div>
-                    <div>Bonjour</div>
-                    <div>Hello</div>
+                <div id="loader" class="loader"></div>
+                <h1 data-cursor="pointer" id="title">I'm Amit Chauhan</h1>
+                <div class="profession-container">
+                  <div class="profession-bar-wrapper">
+                    <div class="profession-bar"></div>
                   </div>
+                  <div id="profession-text" class="profession-text"></div>
                 </div>
-                <div>I'm Amit Chauhan</div>
-                <div class="top-text">Web developer</div>
               </div>
             </div>
           </div>
         </div>
         <div class="scroll-down-main">
-          <div class="scroll-mouse">
+          <div class="scroll-mouse" data-cursor="pointer">
             <div class="mouse-scroll"></div>
           </div>
         </div>
       </div>
     </div>
-    <script type="module" src="./src/themeSwitch.ts"></script>
+    <script type="module" src="./src/main.ts"></script>
+    <script type="module" src="./src/mouseCursor.ts"></script>
+    <script type="module" src="./src/matrixAnimation.ts"></script>
   </body>
 </html>

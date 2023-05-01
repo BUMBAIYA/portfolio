@@ -2,20 +2,37 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
-  --color-neutral-100: hsl(0, 0%, 100%);
+  --color-neutral-100: hsl(0, 0%, 90%);
   --color-neutral-900: hsl(207, 19%, 9%);
 
   --color-accent-100: #2a95bf;
   --color-accent-200: #6d45ff;
   --color-accent-300: #ffce3b;
-  --color-accent-400: hsl(142, 90%, 55%);
-  --color-accent-500: red;
+  --color-accent-400: hsl(136, 60%, 45%);
+  --color-accent-500: hsl(136, 60%, 45%);
   --color-muted-100: #282b69;
+
+  --cursor-ring-size: 3.5rem;
+
+  --loading-stretch-size: 5000;
+  --loading-screen-animation: 4400ms;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  cursor: none;
+}
+
+@font-face {
+  font-family: "revamped";
+  src: url("/fonts/Revamped.otf");
+}
+
+@font-face {
+  font-family: "noise machine";
+  src: url("/fonts/Noise Machine.otf");
 }
 
 *,
@@ -24,6 +41,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* transition: color 200ms ease-in, background-color 200ms ease-in; */
 }
 
 body {
@@ -35,4 +53,116 @@ body {
 .container {
   width: 100%;
   min-height: 100vh;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.logo {
+  position: fixed;
+  top: 2rem;
+  left: 3rem;
+  width: 3rem;
+  fill: var(--color-accent-500);
+}
+
+.main-cursor {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background-color: var(--color-neutral-900);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.main-cursor-ring {
+  display: none;
+  transition: all 100ms ease-in;
+  position: absolute;
+  top: calc(var(--cursor-ring-size) / -1.35);
+  left: calc(var(--cursor-ring-size) / -1.35);
+  width: var(--cursor-ring-size);
+  height: var(--cursor-ring-size);
+  border-radius: 50%;
+  border: 3px solid var(--color-neutral-900);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ---------------- Loading Screen ---------------- */
+#loading-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-neutral-100);
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 400ms ease-in;
+  border-bottom: 0.25rem solid var(--color-neutral-900);
+  transition-delay: 3200ms;
+}
+
+.loading-text {
+  font-family: "noise machine";
+  font-size: 8vw;
+  display: flex;
+  font-weight: bolder;
+  color: var(--color-accent-500);
+  animation: zoom-out 1400ms cubic-bezier(0.46, 0.02, 0, 1.14) 2800ms 1 forwards;
+}
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(400);
+  }
+}
+
+.loading-text span {
+  transition: none;
+  animation: stretch 1400ms cubic-bezier(0.4, 1.4, 0.75, 0.9) forwards;
+  transform-origin: center;
+}
+
+.loading-text span:nth-child(1) {
+  animation-delay: 350ms;
+}
+.loading-text span:nth-child(2) {
+  animation-delay: 700ms;
+}
+.loading-text :nth-child(3) {
+  animation-delay: 1050ms;
+}
+.loading-text :nth-child(4) {
+  animation-delay: 1400ms;
+}
+
+@keyframes scroll-hide {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100vh;
+    display: none;
+  }
+}
+
+@keyframes stretch {
+  5% {
+    transform: scaleX(var(--loading-stretch-size));
+    opacity: 0.1;
+  }
+  15% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }

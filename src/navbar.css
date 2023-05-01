@@ -14,8 +14,8 @@
   max-width: 50px;
   align-items: center;
   left: 3rem;
-  top: 3rem;
-  z-index: 100;
+  top: 7rem;
+  z-index: 99;
 }
 
 .nav-items {
@@ -94,4 +94,64 @@
   .nav-main-container {
     display: flex;
   }
+}
+
+/* --------------- Mobile Navbar -------------------- */
+.menu-icon {
+  position: fixed;
+  top: 2.5rem;
+  right: 2rem;
+  height: 40px;
+  width: 40px;
+  z-index: 10;
+}
+
+#menu-btn {
+  position: relative;
+  display: inline-block;
+  background-color: var(--color-neutral-100);
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.hamburger .line:nth-child(1) {
+  width: 40px;
+  height: 3px;
+  background-color: var(--color-neutral-900);
+  display: block;
+  margin: 8px auto;
+  transition: all 200ms ease-in-out;
+}
+
+.hamburger .line:nth-child(2) {
+  width: 20px;
+  height: 3px;
+  background-color: var(--color-neutral-900);
+  display: block;
+  margin: 8px auto;
+  transition: all 200ms ease-in-out;
+}
+
+#hamburger-6.is-active {
+  transition: all 200ms ease-in-out;
+  transition-delay: 0.2s;
+  transform: rotate(45deg);
+}
+
+#hamburger-6.is-active .line:nth-child(1),
+#hamburger-6.is-active .line:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+#hamburger-6.is-active .line:nth-child(1) {
+  width: 40px;
+  transform: translateY(5px) translateX(0px);
+}
+
+#hamburger-6.is-active .line:nth-child(2) {
+  width: 40px;
+  transform: translateY(-5px) rotate(90deg);
 }
