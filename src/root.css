@@ -3,16 +3,12 @@
 
   color-scheme: light dark;
   --color-neutral-100: hsl(0, 0%, 90%);
-  --color-neutral-900: hsl(207, 19%, 9%);
+  --color-neutral-900: hsl(197, 37%, 24%);
 
-  --color-accent-100: #2a95bf;
-  --color-accent-200: #6d45ff;
-  --color-accent-300: #ffce3b;
-  --color-accent-400: hsl(136, 60%, 45%);
-  --color-accent-500: hsl(136, 60%, 45%);
-  --color-muted-100: #282b69;
+  --color-accent-500: hsl(39, 100%, 50%);
 
   --cursor-ring-size: 3.5rem;
+  --cursor-trail-color: hsla(39, 100%, 50%, 0.25);
 
   --loading-stretch-size: 5000;
   --loading-screen-animation: 4400ms;
@@ -30,31 +26,30 @@
   src: url("/fonts/Revamped.otf");
 }
 
-@font-face {
-  font-family: "noise machine";
-  src: url("/fonts/Noise Machine.otf");
-}
-
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* transition: color 200ms ease-in, background-color 200ms ease-in; */
 }
 
 body {
+  width: 100%;
   box-sizing: border-box;
   color: var(--color-neutral-900);
   background-color: var(--color-neutral-100);
 }
 
+.canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
 .container {
   width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow-y: scroll;
+  min-height: max-content;
 }
 
 .logo {
@@ -105,12 +100,11 @@ body {
   overflow: hidden;
   z-index: 9999;
   transition: opacity 400ms ease-in;
-  border-bottom: 0.25rem solid var(--color-neutral-900);
   transition-delay: 3200ms;
 }
 
 .loading-text {
-  font-family: "noise machine";
+  font-family: "revamped";
   font-size: 8vw;
   display: flex;
   font-weight: bolder;

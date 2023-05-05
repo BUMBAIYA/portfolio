@@ -11,8 +11,6 @@
     <meta name="description" content="Portfolio website of Amit Chauhan" />
   </head>
   <body>
-    <div id="main-cursor" class="main-cursor"></div>
-    <div id="main-cursor-ring" class="main-cursor-ring"></div>
     <div id="loading-container">
       <div id="loading-text" class="loading-text">
         <span>A</span>
@@ -22,6 +20,7 @@
       </div>
     </div>
     <div class="container">
+      <canvas id="canvas" class="canvas"></canvas>
       <div class="logo">
         <svg
           width="100%"
@@ -103,20 +102,12 @@
           </div>
         </div>
       </div>
-      <!-- <div class="menu-icon">
-        <button id="menu-btn" type="button" data-cursor="pointer">
-          <div class="hamburger" id="hamburger-6">
-            <span class="line"></span>
-            <span class="line"></span>
-          </div>
-        </button>
-      </div> -->
       <div class="right-main-container">
         <div class="right-content">
           <div class="right-content-hero">
             <div class="main-text-container">
               <div class="dev-text">
-                <div id="loader" class="loader"></div>
+                <div id="greeting" class="greeting"></div>
                 <h1 data-cursor="pointer" id="title">I'm Amit Chauhan</h1>
                 <div class="profession-container">
                   <div class="profession-bar-wrapper">
@@ -136,7 +127,7 @@
       </div>
     </div>
     <script type="module" src="./src/main.ts"></script>
-    <script type="module" src="./src/mouseCursor.ts"></script>
     <script type="module" src="./src/matrixAnimation.ts"></script>
+    <script type="module" src="./src/canvasEffect.ts"></script>
   </body>
 </html>

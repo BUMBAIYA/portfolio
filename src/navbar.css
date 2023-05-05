@@ -60,7 +60,7 @@
 
 #theme-btn {
   cursor: pointer;
-  background-color: var(--color-neutral-100);
+  background-color: transparent;
   color: var(--color-accent-500);
   outline: none;
   border: none;

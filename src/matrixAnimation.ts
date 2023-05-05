@@ -1,12 +1,12 @@
 const professionText = document.getElementById("profession-text")!;
 const title = document.getElementById("title")!;
-const loader = document.getElementById("loader")!;
+const loader = document.getElementById("greeting")!;
 
 const randomText = "abcdefghijklmnopqrstuvwxyz";
 
 const words = ["developer", "programmer", "reader"];
 
-const loaderWords = ["नमस्ते", "Halo", "Guten tag", "Bonjour", "Hello"];
+const loaderWords = ["Hello", "Halo", "नमस्ते", "Guten tag", "Bonjour"];
 
 type animationProp = {
   waitingTime: number;
@@ -95,8 +95,8 @@ const props: animationProp = {
 };
 
 const nprops: animationProp = {
-  letterChangeDuration: 80,
-  waitingTime: 2000,
+  letterChangeDuration: 50,
+  waitingTime: 3000,
   animationDelay: 5400,
   animateOn: "normal",
 };
