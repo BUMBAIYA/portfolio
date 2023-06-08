@@ -19,7 +19,7 @@ function createMatrixTextAnimation(
   elm: HTMLElement,
   textArray: string[],
   randomText: string,
-  animationProp: animationProp
+  animationProp: animationProp,
 ) {
   let maxLength = 0;
   let paddedTextArray: string[] = [];

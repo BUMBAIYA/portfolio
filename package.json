@@ -6,10 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "husky install",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,mdx,css,json}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,mdx,css,json}\""
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
+  },
+  "dependencies": {},
+  "lint-staged": {
+    "*.+(js|jsx|ts|tsx|json|css)": ["prettier --write"]
   }
 }

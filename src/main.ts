@@ -1,11 +1,11 @@
 const darkTheme = () => {
   document.documentElement.style.setProperty(
     "--color-neutral-100",
-    "hsl(207, 19%, 9%)"
+    "hsl(207, 19%, 9%)",
   );
   document.documentElement.style.setProperty(
     "--color-neutral-900",
-    "hsl(0, 0%, 95%)"
+    "hsl(0, 0%, 95%)",
   );
   document.querySelector("#theme-btn")!.classList.toggle("spin");
   localStorage.setItem("theme", "dark");
@@ -14,11 +14,11 @@ const darkTheme = () => {
 const lightTheme = () => {
   document.documentElement.style.setProperty(
     "--color-neutral-100",
-    "hsl(0, 0%, 95%)"
+    "hsl(0, 0%, 95%)",
   );
   document.documentElement.style.setProperty(
     "--color-neutral-900",
-    "hsl(207, 19%, 9%)"
+    "hsl(207, 19%, 9%)",
   );
   document.querySelector("#theme-btn")!.classList.toggle("spin");
   localStorage.setItem("theme", "light");
