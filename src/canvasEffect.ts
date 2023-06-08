@@ -103,7 +103,7 @@ export function createTrail(canvasElement: HTMLCanvasElement) {
   function getColor() {
     const cssRoot = document.querySelector(":root")!;
     const c = getComputedStyle(cssRoot).getPropertyValue(
-      "--cursor-trail-color"
+      "--cursor-trail-color",
     );
     return c;
   }
@@ -128,29 +128,29 @@ export function createTrail(canvasElement: HTMLCanvasElement) {
 
   let newLines: Line[] = [];
 
+  function move(event: MouseEvent | TouchEvent) {
+    !(event instanceof MouseEvent)
+      ? ((cursorPosition.x = event.touches[0].pageX),
+        (cursorPosition.y = event.touches[0].pageY + cursorYOffset))
+      : ((cursorPosition.x = event.clientX),
+        (cursorPosition.y = event.clientY + cursorYOffset));
+    event.preventDefault();
+  }
+
+  function createLine(event: TouchEvent) {
+    event.touches.length === 1 &&
+      ((cursorPosition.x = event.touches[0].pageX),
+      (cursorPosition.y = event.touches[0].pageY + cursorYOffset));
+  }
+
   function onMouseMove(e: MouseEvent | TouchEvent) {
     function populateLines() {
       newLines = [];
       for (let i = 0; i < AnimationFeature.trails; i++) {
         newLines.push(
-          new Line({ spring: 0.45 + (i / AnimationFeature.trails) * 0.025 })
+          new Line({ spring: 0.45 + (i / AnimationFeature.trails) * 0.025 }),
         );
       }
-    }
-
-    function move(event: MouseEvent | TouchEvent) {
-      !(event instanceof MouseEvent)
-        ? ((cursorPosition.x = event.touches[0].pageX),
-          (cursorPosition.y = event.touches[0].pageY + cursorYOffset))
-        : ((cursorPosition.x = event.clientX),
-          (cursorPosition.y = event.clientY + cursorYOffset));
-      event.preventDefault();
-    }
-
-    function createLine(event: TouchEvent) {
-      event.touches.length === 1 &&
-        ((cursorPosition.x = event.touches[0].pageX),
-        (cursorPosition.y = event.touches[0].pageY + cursorYOffset));
     }
 
     document.removeEventListener("mousemove", onMouseMove);
@@ -176,25 +176,43 @@ export function createTrail(canvasElement: HTMLCanvasElement) {
     cursorYOffset = Math.floor(yOffet);
   }
 
+  function stopAnimation() {
+    running = false;
+  }
+
+  function startAnimation() {
+    if (!running) {
+      running = true;
+      renderAnimation();
+    }
+  }
+
   function renderTrailCursor() {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("touchstart", onMouseMove);
     document.body.addEventListener("orientationchange", resizeCanvas);
     window.addEventListener("resize", resizeCanvas);
     window.addEventListener("scroll", trackYScroll);
-    window.addEventListener("focus", () => {
-      if (!running) {
-        running = true;
-        renderAnimation();
-      }
-    });
-    window.addEventListener("blur", () => {
-      running = false;
-    });
+    window.addEventListener("focus", startAnimation);
+    window.addEventListener("blur", stopAnimation);
     resizeCanvas();
   }
 
-  renderTrailCursor();
+  function cleanUp() {
+    document.removeEventListener("mousemove", move);
+    document.removeEventListener("touchmove", createLine);
+    document.removeEventListener("touchstart", createLine);
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("touchstart", onMouseMove);
+    document.body.removeEventListener("orientationchange", resizeCanvas);
+    window.removeEventListener("resize", resizeCanvas);
+    window.removeEventListener("scroll", trackYScroll);
+    window.removeEventListener("focus", startAnimation);
+    window.removeEventListener("blur", stopAnimation);
+  }
+
+  return { cleanUp, renderTrailCursor };
 }
 
-createTrail(canvas);
+const { renderTrailCursor } = createTrail(canvas);
+renderTrailCursor();
