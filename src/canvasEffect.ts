@@ -1,7 +1,12 @@
 const canvas = document.getElementById("canvas")! as HTMLCanvasElement;
 
-export function createTrail(canvasElement: HTMLCanvasElement) {
-  const ctx = canvasElement.getContext("2d")!;
+type CreateTrailProps = {
+  canvasElement: HTMLCanvasElement;
+  heightScreen: boolean;
+};
+
+export function createTrail(props: CreateTrailProps) {
+  const ctx = props.canvasElement.getContext("2d")!;
   let AnimationFeature = {
     friction: 0.5,
     trails: 20,
@@ -165,7 +170,9 @@ export function createTrail(canvasElement: HTMLCanvasElement) {
 
   function resizeCanvas() {
     ctx.canvas.width = window.innerWidth - 20;
-    ctx.canvas.height = window.innerHeight;
+    ctx.canvas.height = props.heightScreen
+      ? document.body.scrollHeight
+      : window.innerHeight;
   }
 
   function trackYScroll() {
@@ -214,5 +221,8 @@ export function createTrail(canvasElement: HTMLCanvasElement) {
   return { cleanUp, renderTrailCursor };
 }
 
-const { renderTrailCursor } = createTrail(canvas);
+const { renderTrailCursor } = createTrail({
+  canvasElement: canvas,
+  heightScreen: true,
+});
 renderTrailCursor();
